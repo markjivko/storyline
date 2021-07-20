@@ -123,7 +123,7 @@ jQuery && jQuery.extend({
                 if (options.guide) {
                     if (undefined === global.guideConsole) {
                         global.guideConsole = $(
-                            '<div style="'
+                            '<div rel="console" style="'
                                 + 'background:none repeat scroll 0 0 rgba(58,58,58,0.9);'
                                 + 'bottom:115px;'
                                 + 'color:#FFFFFF;'
