@@ -98,8 +98,6 @@ Wether to show or hide the Storyline guide.
 If set to *true*, you will get a visual representation of each frame, its parameters, position, state etc.
 You will also get the __Storyline Log__ showing you information such as debugging data, script information, errors etc.
 
-*Screenshot:* ![demo](http://dl.dropbox.com/u/23479014/storyline/screenshot.jpg)
-
 ### Options - buildMenu
 If you set this option to a valid array of strings, each one will be interpreted as the name of a frame, in the order 
 passed to the __frames__ key above. Plus, a menu will be constructed with the provided list of frame names; each time a 
