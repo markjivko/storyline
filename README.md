@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://stephino.github.io/storyline/">
-        <img src="https://repository-images.githubusercontent.com/387865658/0939613d-d707-44c3-80b1-bca9fad59525"/>
+        <img src="https://repository-images.githubusercontent.com/387865658/8abb374b-b1b6-40f3-9358-73c77143fef3"/>
     </a>
 </p>
 
