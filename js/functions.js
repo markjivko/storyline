@@ -26,7 +26,7 @@ $(document).ready(function() {
                 onActive: function(coords, event) {
                     // Scale by screen played
                     objectsCache.frame1.css({
-                        transform: `scale(${coords.percent.screenPlayed/50 + 0.8})`
+                        transform: `scale(${coords.percent.screenPlayed/5 + 0.8})`
                     });
                 }
             }, 
