@@ -14,20 +14,28 @@ html, body {
     margin: 0;
     font-family: Oswald,Arial,sans-serif;
 }
+html {
+    overflow: hidden;
+}
 body {
     overflow: hidden;
-    overflow-y:scroll;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    position: fixed;
     -webkit-overflow-scrolling: touch;
-}
-.frame1 {
-    margin-top: 100px;
 }
 .storyline-menu {
     position: fixed;
-    top: 0;
+    z-index: 11;
+    top: 0px;
+    left: 0px;
     width: 100%;
+    min-height: 52px;
     text-align: center;
-    background: rgb(253,219,39);
+    box-shadow: rgb(253 219 39 / 50%) 0px 4px 0px;
+    background: rgb(253, 219, 39);
+    display: block;
 }
 .storyline-menu > .logo {
     display: block;
@@ -49,18 +57,29 @@ body {
     transform: scale(0.8);
 }
 .storyline-menu > div {
-    width: auto;
     display: inline-block;
-    padding: 20px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 18px;
+    font-family: Oswald,Arial,sans-serif;
     color: #333;
     cursor: pointer;
+    font-weight: normal;
+    min-width: 50px;
+    padding: 0 10px;
+    margin: 0;
+    text-transform: capitalize;
+    background: transparent;
 }
 .storyline-menu > div.active {
     color: #000;
     -webkit-box-shadow: 0px 4px 0px 0px rgb(0,177,210);
     box-shadow: 0px 4px 0px 0px rgb(0,177,210);
 }
-.footer {
+.storyline-menu-item.active, .storyline-menu-item:active, .storyline-menu-item:hover {
+    color:#000 !important;box-shadow:0px 4px 0px #00B1D2;
+}
+.header, .footer {
     width: 100%;
     text-align: center;
     height: 400px;
@@ -75,7 +94,9 @@ body {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
+    align-content: center;
     justify-content: center;
+    flex-direction: column;
 }
 .deco {
     position: absolute;
@@ -85,8 +106,10 @@ body {
     -webkit-transform: scale(0.8);
     -ms-transform: scale(0.8);
     transform: scale(0.8);
-    top: 120px;
     z-index: 1;
+}
+body.view-code .deco {
+    top: 120px;
 }
 .deco:before, .deco:after {
     content: '';
@@ -171,6 +194,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
     font-size: 2em;
+    position: relative;
 }
 [class^=frame] > span {
     display: inline-block;
@@ -188,8 +212,7 @@ body {
     background: #333;
     color: #fff;
     text-align: left;
-    padding: 20px;
-    display: inline-block;
+    padding: 21px;
     white-space: pre;
     position: relative;
     min-height: 100px;
@@ -201,6 +224,10 @@ body {
     -webkit-box-shadow:0px 10px 10px rgba(0,0,0,0.2);
     box-shadow:0px 10px 10px rgba(0,0,0,0.2);
     z-index: 11;
+    display: none;
+}
+body.view-code .code {
+    display: inline-block;
 }
 .code .func {
     color: yellow;
@@ -219,6 +246,28 @@ body {
 }
 [class^=frame]:nth-child(2n) .code {
     background: #111;
+}
+button {
+    margin-top: 50px;
+    min-width: 200px;
+    height: 50px;
+    background: rgb(253, 219, 39);
+    box-shadow: 0px 4px 0px rgba(253, 219, 39, 0.5);
+    color: #000;
+    border: none;
+    cursor: pointer;
+    clear: both;
+    float: left;
+    display: inline-block;
+    font-size: 1.1em;
+    padding: 0 20px;
+    transition: transform 0.1s linear;
+}
+button:hover {
+    transform: scale(1.1);
+}
+button:active {
+    transform: scale(0.8);
 }
 @media (max-width: 767px) {
     [rel="console"] {

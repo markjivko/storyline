@@ -6,25 +6,25 @@ $(document).ready(function() {
         frame3: $('.frame3 > .deco'),
         frame4: $('.frame4 > .deco'),
         frame5: $('.frame5 > .deco'),
-        frame6: $('.frame6 > .deco'),
+        frame6: $('.frame6 > .deco')
     };
     
     // Prepare the storyline
     $.storyline({
         frames: {
             '.frame1' : {
-                onActive: function(coords, event){
-                    // Rotate by uncentered percent
+                onActive: function(coords, event) {
+                    // Scale by screen played
                     objectsCache.frame1.css({
-                        transform: `rotate(${coords.percent.frameUnCentered}deg) scale(0.8)`
+                        transform: `scale(${coords.percent.screenPlayed/50 + 0.8})`
                     });
                 }
             }, 
             '.frame2' : {
-                onActive: function(coords, event) {
-                    // Scale by screen played
+                onActive: function(coords, event){
+                    // Rotate by uncentered percent
                     objectsCache.frame2.css({
-                        transform: `scale(${coords.percent.screenPlayed/50 + 0.8})`
+                        transform: `rotate(${coords.percent.frameUnCentered}deg) scale(0.8)`
                     });
                 }
             }, 
@@ -61,7 +61,20 @@ $(document).ready(function() {
                 }
             }
         },
-        guide: true,
-        buildMenu: ["Rotate",'Scale','Translate','Toggle','Invert','Your turn']
+        guide: '#console' === window.location.hash,
+        buildMenu: ['1', '2', '3', '4', '5', '6']
     });
+    
+    // Change the link
+    if ('#console' === window.location.hash) {
+        $('body').addClass('view-code');
+        $('button').html('Visit repository').click(function() {
+            window.location.href = 'https://github.com/Stephino/storyline';
+        });
+    } else {
+        $('button').click(function(){
+            window.location.hash = '#console';
+            window.location.reload();
+        });
+    }
 });

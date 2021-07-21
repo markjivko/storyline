@@ -37,7 +37,14 @@ jQuery && jQuery.extend({
                 menuSpeed: 1500,
                 tolerance: 20,
                 ignoreWarnings: true
-            },o);
+            },o),
+            objects = {
+                body: $('body'),
+                holder: null
+            };
+            objects.holder = 'fixed' === objects.body.css('position')
+                ? objects.body
+                : $(window);
 
         // Errors
         message.error.singleton = 'Singleton. The storyline method can only be used once.';
@@ -145,7 +152,7 @@ jQuery && jQuery.extend({
                                 + message.const.storyline 
                                 + ' log</b><br/></div>'
                         );
-                        $('body').append(global.guideConsole);
+                        objects.body.append(global.guideConsole);
                     }
 
                     global.guideConsole.html(
@@ -226,9 +233,9 @@ jQuery && jQuery.extend({
         // Set globally used variables
         $.extend(global, {
             // Get the window width and height
-            screenHeight: $(window).height(),
-            screenWidth: $(window).width(),
-            documentHeight: $('body').outerHeight(true),
+            screenHeight: objects.holder.height(),
+            screenWidth: objects.holder.width(),
+            documentHeight: objects.holder.outerHeight(true),
             
             // Ready for actions
             readyForActions: false,
@@ -308,7 +315,7 @@ jQuery && jQuery.extend({
                     // Scroll to element
                     if (null !== targetFrame) {
                         if (scroll) {
-                            if($(window).scrollTop() !== $(targetFrame).offset().top) {
+                            if(objects.holder.scrollTop() !== $(targetFrame).offset().top) {
                                 var scrollTo = $(targetFrame).offset().top;
                                 if (scrollTo >= options.frameTop) {
                                     scrollTo -= options.frameTop;
@@ -400,7 +407,7 @@ jQuery && jQuery.extend({
                             + 'cursor:pointer;'
                             + 'font-weight:normal;'
                             + 'min-width:50px;'
-                            + 'padding:0 20px;'
+                            + 'padding:0 10px;'
                             + 'margin:0;'
                             + 'text-transform:capitalize;'
                             + 'background:transparent;'
@@ -420,12 +427,12 @@ jQuery && jQuery.extend({
 
                 // Append to body
                 if (global.storyLineMenu.children().length) {
-                    $('body').append(global.storyLineMenu);
+                    objects.body.append(global.storyLineMenu);
 
                     // Append the extra CSS
                     if (options.guide) {
                         global.storyLineMenu.prepend('<a class="logo" href="https://github.com/Stephino/storyline"></a>');
-                        $('body').append($(
+                        objects.body.append($(
                             '<style type="text/css">'
                                 + '.' + message.const.menuItemClass + '.active, '
                                 + '.' + message.const.menuItemClass + ':active, '
@@ -601,7 +608,7 @@ jQuery && jQuery.extend({
         
             // Set the window scroll function
             var windowScrollFnc = function(e) {
-                var storylineScrollTop = $(window).scrollTop();
+                var storylineScrollTop = objects.holder.scrollTop();
 
                 // For each object 
                 $.each(ui,function(k,v){
@@ -787,9 +794,11 @@ jQuery && jQuery.extend({
                     storyGuideMove(storylineScrollTop);
                 }
                 
-                global.screenHeight = $(window).height();
-                global.screenWidth = $(window).width();
-                global.documentHeight = $('body').outerHeight(true);
+                global.screenHeight = objects.holder.height();
+                global.screenWidth = objects.holder.width();
+                global.documentHeight = objects.holder.is('body')
+                    ? objects.holder[0].scrollHeight
+                    : $('html')[0].scrollHeight;
             };
         
             return windowScrollFnc;
@@ -801,7 +810,7 @@ jQuery && jQuery.extend({
             global.framesLoaded = false;
             $.each(options.frames, function(k,v){
                 if($(k).length > 0) {                   
-                    $(window).scroll(storyFrame(k,v));
+                    objects.holder.scroll(storyFrame(k,v));
                 } else {
                     log(message.error.storyFrame_elementNotFound.replace('__name__',k), logLevel.error);
                 }
@@ -810,16 +819,16 @@ jQuery && jQuery.extend({
 
             // Window resize?
             $(window).resize(function(){
-                $(window).trigger('scroll');
+                objects.holder.trigger('scroll');
             });
 
             // Body change?
-            $('body').change(function(){
-                $(window).trigger('scroll');
+            objects.holder.change(function(){
+                $(this).trigger('scroll');
             });
         
             // Automatically trigger the scroll
-            $(window).trigger('scroll');
+            objects.holder.trigger('scroll');
 
             if (false !== options.buildMenu) {
                 storyMenuCreate();
@@ -837,9 +846,9 @@ jQuery && jQuery.extend({
                     });
                 }
                 setTimeout(function(){
-                    var startScroll = $(window).scrollTop();
+                    var startScroll = objects.holder.scrollTop();
                     var endScroll = startScroll + 1;
-                    if (($(window).innerHeight() + $(window).scrollTop()) >= $("body").height()) {
+                    if ((objects.holder[0].scrollHeight + objects.holder.scrollTop()) >= objects.holder.height()) {
                         endScroll  = startScroll - 1;
                     }
                     log(message.error.needsRefresh
@@ -861,7 +870,7 @@ jQuery && jQuery.extend({
                                     // Still bad?
                                     if (global.documentHeight <= global.screenHeight) {
                                         log(message.error.invalidContent, logLevel.error);
-                                        $(window).unbind('scroll').die();
+                                        objects.holder.unbind('scroll');
                                         $('[rel=frameguide]').remove();
                                         $(global.storyGuideObject).remove();
                                         $(global.storyLineMenu).remove();
@@ -882,7 +891,7 @@ jQuery && jQuery.extend({
             } else {
                 global.readyForActions = true;
                 if (options.guide) storyGuideCreate();
-                $(window).trigger('scroll');
+                objects.holder.trigger('scroll');
             }
         };
     

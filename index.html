@@ -17,12 +17,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
+        <div class="header">
+            <span><b>Storyline</b> is a small jQuery plugin that enables cross-browser scroll-based effects.</span>
+            <button>Enable console</button>
+        </div>
+        
         <div class="frame1">
             <span>Frame number 1</span>
             <div class="code">
-<span class="comment">// (onActive) Rotate by uncentered percent</span>
-<span class="func">objectsCache.frame1.css</span>({
-    <span class="prop">transform</span>: <span class="val">`rotate(<span class="var">${coords.percent.frameUnCentered}</span>deg) scale(0.8)`</span>
+<span class="comment">// (onActive) Scale by frame visiblity</span>
+<span class="func">objectsCache.frame2.css</span>({
+    <span class="prop">transform</span>: <span class="val">`scale(<span class="var">${coords.percent.screenPlayed/50 + 0.8}</span>)`</span>
 });
             </div>
             <div class="deco"></div>
@@ -30,9 +35,9 @@
         <div class="frame2">
             <span>Frame number 2</span>
             <div class="code">
-<span class="comment">// (onActive) Scale by frame visiblity</span>
-<span class="func">objectsCache.frame2.css</span>({
-    <span class="prop">transform</span>: <span class="val">`scale(<span class="var">${coords.percent.screenPlayed/50 + 0.8}</span>)`</span>
+<span class="comment">// (onActive) Rotate by uncentered percent</span>
+<span class="func">objectsCache.frame1.css</span>({
+    <span class="prop">transform</span>: <span class="val">`rotate(<span class="var">${coords.percent.frameUnCentered}</span>deg) scale(0.8)`</span>
 });
             </div>
             <div class="deco"></div>
@@ -73,6 +78,7 @@
             <span>Frame number 6</span>
             <div class="deco pulse"></div>
         </div>
+        
         <div class="footer">Copyright &copy; 2013 &dot; <b>Mark Jivko</b></div>
     </body>
 </html>
