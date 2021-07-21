@@ -406,7 +406,7 @@ jQuery && jQuery.extend({
                             + 'color:#333;'
                             + 'cursor:pointer;'
                             + 'font-weight:normal;'
-                            + 'min-width:50px;'
+                            + 'min-width:25px;'
                             + 'padding:0 10px;'
                             + 'margin:0;'
                             + 'text-transform:capitalize;'
