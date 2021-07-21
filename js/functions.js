@@ -1,3 +1,13 @@
+/**
+ * Storyline
+ * 
+ * @title      Storyline Demo
+ * @desc       A short storyline demo page
+ * @copyright  (c) 2013, Mark Jivko
+ * @author     Mark Jivko <stephino.team@gmail.com>
+ * @package    stephino-rpg
+ * @license    GPL v3+, https://gnu.org/licenses/gpl-3.0.txt
+ */
 $(document).ready(function() {
     // Cache objects
     var objectsCache = {
@@ -78,3 +88,5 @@ $(document).ready(function() {
         });
     }
 });
+
+/*EOF*/
