@@ -9,6 +9,10 @@ Storyline
 
 Build *beautiful* landing pages that change as the user scrolls up or down.
 
+Demo
+----
+Just [visit this page](https://stephino.github.io/storyline) for a short demo of the plugin and included console/debugger.
+
 How to use
 ----------
 ```JavaScript
