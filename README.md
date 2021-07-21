@@ -9,7 +9,7 @@ Storyline
 
 Build *beautiful* landing pages that change as the user scrolls up or down.
 
-Project created in 2013 and proted to GitHub in 2021.
+Project created in 2013 and ported to GitHub in 2021.
 
 Demo
 ----
