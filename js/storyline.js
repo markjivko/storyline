@@ -30,7 +30,7 @@ jQuery && jQuery.extend({
             undefined,
             global = {},
             message = {error:{},status:{},const:{}},
-            logLevel = {debug:'Debug',info:'Info ',error:'Error'},
+            logLevel = {debug:'debug', info:'info', error:'error'},
             options = $.extend({
                 frames: {},
                 frameTop: 0,
@@ -38,7 +38,8 @@ jQuery && jQuery.extend({
                 buildMenu: false,
                 menuSpeed: 1500,
                 tolerance: 20,
-                ignoreWarnings: true
+                ignoreWarnings: true,
+                logLevel: logLevel.debug
             },o),
             objects = {
                 body: $('body'),
@@ -73,7 +74,6 @@ jQuery && jQuery.extend({
         message.status.frameTopOverwritten = 'The <frameTop> was overwritten to adapt to the guide menu.';
         // Constants
         message.const.storyline = 'Storyline';
-        message.const.logLevel = logLevel.debug;
         message.const.refreshAfter = 200;
         message.const.dataTargetFrame = 'targetFrame';
         message.const.dataFrameInfo = 'frameInfo';
@@ -97,13 +97,13 @@ jQuery && jQuery.extend({
                         logIndexCurrent = logIndexIterator;
                         textColor = textColors[logIndexIterator];
                     }
-                    if (v === message.const.logLevel) {
+                    if (v === options.logLevel) {
                         logIndexAllowed = logIndexIterator;
                     }
                     logIndexIterator ++;
                 });
             
-                if(logIndexCurrent < logIndexAllowed) return false;
+                if (logIndexCurrent < logIndexAllowed) return false;
                 switch(l) {
                     case logLevel.debug:
                         console.log(message.const.storyline + ': ', m);
@@ -654,8 +654,9 @@ jQuery && jQuery.extend({
                         }
 
                         // Frame visible?
-                        var visible = coords.frameBottom <= (coords.screenHeight + options.tolerance/2) && coords.frameTop <= (coords.screenHeight + options.tolerance/2);
-
+                        var visible = coords.frameBottom <= (coords.screenHeight - options.tolerance/2) 
+                            && coords.frameTop <= (coords.screenHeight - options.tolerance/2);
+                    
                         // Calculate the total percent played
                         coords.percent.screenPlayed = (storylineScrollTop) / (global.documentHeight - global.screenHeight) * 100;
 
