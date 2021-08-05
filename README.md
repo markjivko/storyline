@@ -97,6 +97,7 @@ You can further customize your storyline with the following options:
     buildMenu: false, // Boolean|Array - List of names for each frame
     menuSpeed: 1500, // Integer - Scroll duration for menu clicks
     tolerance: 20, // Integer - frame tolerance
+    logLevel: 'debug', // String - log level
     ignoreWarnings: true // Boolean - If set to false, the storyline will fail on each error
 }
 ```
@@ -142,24 +143,21 @@ The plugin also uses an error logging mechanism with log level filtering.
 ```JavaScript
 // Available log levels
 logLevel = {
-    debug:'Debug',
-    info:'Info ',
-    error:'Error'
+    debug:'debug',
+    info:'info',
+    error:'error'
 }
 // How to use
 log(message.status.x, logLevel.debug); // Log a debugging message at index "x"
 log(message.status.y, logLevel.info); // Log an information message at index "y"
 log(message.error.z, logLevel.error); // Log an error message at index "z"
 ```
-You can also set the log level by changing the *logLevel* constant:
-```JavaScript
-message.const.logLevel = logLevel.debug; // Log all messages
-message.const.logLevel = logLevel.info; // Log info messages and error messages
-message.const.logLevel = logLevel.error; // Only log error messages
-```
-You can view the log either via the *browser console* or via the *Storyline Log* available when the *guide* option 
+You can also set the log level by changing the *logLevel* option.
+
+You can view the log either in the *browser console* or in the *Storyline Log* when the *guide* option 
 is set to *true*.
 
 Examples of sites using the Storyline plugin
 --------------------------------------------
 [Frank HTML](https://frank.stephino.com)
+[APK Factory](https://stephino.github.io/apk-factory/)
