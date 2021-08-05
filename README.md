@@ -159,5 +159,5 @@ is set to *true*.
 
 Examples of sites using the Storyline plugin
 --------------------------------------------
-[Frank HTML](https://frank.stephino.com)
-[APK Factory](https://stephino.github.io/apk-factory/)
+* [Frank HTML](https://frank.stephino.com)
+* [APK Factory](https://stephino.github.io/apk-factory/)
