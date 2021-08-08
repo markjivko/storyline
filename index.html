@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <title>Storyline jQuery plugin</title>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/storyline.js"></script>
+        <script type="text/javascript" src="https://stephino.github.io/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="js/storyline.min.js"></script>
         <script type="text/javascript" src="js/functions.js"></script>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="icon" type="image/png" href="./img/favicon.png">
@@ -25,52 +25,54 @@
         <div class="frame1">
             <span>Frame number 1</span>
             <div class="code">
-<span class="comment">// (onActive) Scale by frame visiblity</span>
-<span class="func">objectsCache.frame2.css</span>({
-    <span class="prop">transform</span>: <span class="val">`scale(<span class="var">${coords.percent.screenPlayed/10 + 0.8}</span>)`</span>
-});
+                // (onActive) Scale by frame visiblity
+                objectsCache.frame2.css({
+                    transform: `scale(${coords.percent.screenPlayed / 10 + 0.8})`
+                });
             </div>
             <div class="deco"></div>
         </div>
         <div class="frame2">
             <span>Frame number 2</span>
             <div class="code">
-<span class="comment">// (onActive) Rotate by uncentered percent</span>
-<span class="func">objectsCache.frame1.css</span>({
-    <span class="prop">transform</span>: <span class="val">`rotate(<span class="var">${coords.percent.frameUnCentered}</span>deg) scale(0.8)`</span>
-});
+                // (onActive) Rotate by uncentered percent
+                objectsCache.frame1.css({
+                    transform: `rotate(${coords.percent.frameUnCentered}deg) 
+                        scale(0.8)`
+                });
             </div>
             <div class="deco"></div>
         </div>
         <div class="frame3">
             <span>Frame number 3</span>
             <div class="code">
-<span class="comment">// (onActive) Translate by uncentered percent</span>
-<span class="func">$(<span class="prop">this</span>).css</span>({
-    <span class="prop">transform</span>: <span class="val">`translate(<span class="var">${coords.percent.frameUnCentered/2}</span>%, 0)`</span>
-});
+                // (onActive) Translate by uncentered percent
+                $(this).css({
+                    transform: `translate(${coords.percent.frameUnCentered / 2}%, 0)`
+                });
             </div>
             <div class="deco"></div>
         </div>
         <div class="frame4">
             <span>Frame number 4</span>
             <div class="code">
-<span class="prop">onEnter</span>: function() {
-    <span class="func">objectsCache.frame3.addClass</span>(<span class="val">'active'</span>);
-},
-<span class="prop">onLeave</span>: function() {
-    <span class="func">objectsCache.frame3.removeClass</span>(<span class="val">'active'</span>);
-}
+                onEnter: function() {
+                    objectsCache.frame3.addClass('active');
+                },
+                onLeave: function() {
+                    objectsCache.frame3.removeClass('active');
+                }
             </div>
             <div class="deco"></div>
         </div>
         <div class="frame5">
             <span>Frame number 5</span>
             <div class="code">
-<span class="comment">// (onActive) Invert by uncentered percent</span>
-<span class="func">$(<span class="prop">this</span>).css</span>({
-    <span class="prop">filter</span>: <span class="val">`invert(<span class="var">${(1 - coords.percent.frameUnCentered/50)/2}</span> sepia(<span class="var">${(1 - coords.percent.frameUnCentered/50)/2}</span>`</span>
-});
+                // (onActive) Invert by uncentered percent
+                $(this).css({
+                    filter: `invert(${(1 - coords.percent.frameUnCentered / 50) / 2} 
+                        sepia(${(1 - coords.percent.frameUnCentered / 50) / 2}`
+                });
             </div>
             <div class="deco"></div>
         </div>
@@ -79,6 +81,9 @@
             <div class="deco pulse"></div>
         </div>
         
-        <div class="footer">Copyright &copy; 2013 &dot; <b>Mark Jivko</b></div>
+        <div class="footer">
+            <button>Enable console</button>
+            Copyright &copy; 2013 &dot; <b>Mark Jivko</b>
+        </div>
     </body>
 </html>

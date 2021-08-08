@@ -63,6 +63,7 @@ jQuery && jQuery.extend({
         message.error.storyFrame_notValid = 'storyFrame: Invalid frame. Element "__element__" does not have a valid function of function object assigned.';
         message.error.needsRefresh = 'Properties need to be reset. Scroll from __start__ to __end__ and back in __time__ miliseconds.';
         message.error.invalidContent = 'Invalid content. The page must have a vertical scroll bar.';
+        
         // Status messages
         message.status.setOptions = 'Set options:';
         message.status.storyMenuCreate_init = 'storyMenuCreate - Before.';
@@ -72,6 +73,7 @@ jQuery && jQuery.extend({
         message.status.storyFrame_init = 'storyFrame "__u__" - Before.';
         message.status.storyFrame_end = 'storyFrame "__u__" - After.';
         message.status.frameTopOverwritten = 'The <frameTop> was overwritten to adapt to the guide menu.';
+        
         // Constants
         message.const.storyline = 'Storyline';
         message.const.refreshAfter = 200;

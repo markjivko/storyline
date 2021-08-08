@@ -78,6 +78,27 @@ $(document).ready(function() {
     // Change the link
     if ('#console' === window.location.hash) {
         $('body').addClass('view-code');
+        
+        // Prepare the code highlights
+        var codeHighlights = {
+            '<span class="comment">$1</span>': /(\/\/.*?)(?=[\r\n])/sg,
+            '<span class="func">$1</span>': /([\$\w\.]+)(?=[\(\{])/g,
+            '<span class="prop">$1</span>': /([\w\.]+)(?=:)/g,
+            '<span class="val">this</span>': /\bthis\b/g,
+            '<span class="val">$1</span>': /('[^']+')/g,
+            '<span class="var">$1</span>': /((?:\w+\.)+\w+)/g
+        };
+        
+        // Apply code highliths
+        $.each($('.code'), function(){
+            var code = $(this).text();
+            for (var replacement in codeHighlights) {
+                code = code.replaceAll(codeHighlights[replacement], replacement);
+            }
+            code = code.replaceAll(/^ {16}/mg, '');
+            $(this).html(code);
+        });
+        
         $('button').html('Visit repository').click(function() {
             window.location.href = 'https://github.com/Stephino/storyline';
         });
