@@ -39,6 +39,7 @@ jQuery && jQuery.extend({
                 menuSpeed: 1500,
                 tolerance: 20,
                 ignoreWarnings: true,
+                scrollIntoView: false,
                 logLevel: logLevel.debug
             },o),
             objects = {
@@ -585,6 +586,7 @@ jQuery && jQuery.extend({
             // Create the story frames
             var storyFrame = function(u, f) {
                 log(message.status.storyFrame_init.replace('__u__',u));
+                
                 // Preserve the selector
                 var frameSelector = u;
 
@@ -595,7 +597,8 @@ jQuery && jQuery.extend({
                 var fn = {
                     onEnter: null,
                     onLeave: null,
-                    onActive: null
+                    onActive: null,
+                    scrollIntoView: options.scrollIntoView
                 };
 
                 // The input is a function
@@ -703,6 +706,13 @@ jQuery && jQuery.extend({
                                 // Call the onEnter function
                                 if (typeof fn.onEnter === 'function') {
                                     fn.onEnter.call($(v),coords,e);
+                                    
+                                    // Scroll into view
+                                    if (fn.scrollIntoView) {
+                                        window.setTimeout(() => {
+                                            $(v)[0].scrollIntoView({behavior: "smooth", block: "start"});
+                                        }, 250);
+                                    }
                                 }
                             } else {
                                 // Call the onLeave function

@@ -24,7 +24,8 @@ $(document).ready(function(){
             'frameSelector': {
                 onEnter: function(c,e){},
                 onActive: function(c,e){},
-                onLeave: function(c,e){}
+                onLeave: function(c,e){},
+                scrollIntoView: false
             }
         },
         // @see Options
@@ -36,6 +37,7 @@ $(document).ready(function(){
 *  *onEnter* - Function; called when the frame becomes visible.
 *  *onActive* - Function; called while the frame is visible, on each scroll event.
 *  *onLeave* - Function; called when the frame becomes invisible to the user.
+*  *scrollIntoView* - Boolean; overrides the option with the same name; triggered 250ms after *onEnter* to perform a scrollIntoView action
 
 You can add as many frame selectors as you wish. Each selector can point to 
 either 1 HTML element (for instance, an *#id* selector) or to many HTML elements
@@ -97,7 +99,8 @@ You can further customize your storyline with the following options:
     buildMenu: false, // Boolean|Array - List of names for each frame
     menuSpeed: 1500, // Integer - Scroll duration for menu clicks
     tolerance: 20, // Integer - frame tolerance
-    logLevel: 'debug', // String - log level
+    logLevel: 'debug', // String - log level,
+    scrollIntoView: false, // Boolean - Default value for scroll into view
     ignoreWarnings: true // Boolean - If set to false, the storyline will fail on each error
 }
 ```
@@ -122,6 +125,9 @@ page will scroll to the correspondent frame.
 
 ### Options - tolerance
 This is used to trigger the *onEnter* and *onLeave* actions more loosely. Test using the *guide* option set to *true*.
+
+### Options - scrollIntoView
+This is triggered 250ms after *onEnter* and performs a scrollIntoView action. The homonymous parameter in frames overrides this global option.
 
 ### Options - ignoreWarnings
 If another option is set incorrectly and ignoreWarnings is set to True, the script will halt at the first encountered 
