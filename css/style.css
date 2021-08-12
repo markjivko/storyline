@@ -36,6 +36,10 @@ body {
     position: fixed;
     -webkit-overflow-scrolling: touch;
 }
+a {
+    color: #000;
+    text-decoration: none;
+}
 .storyline-menu {
     position: fixed;
     z-index: 11;
