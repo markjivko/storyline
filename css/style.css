@@ -40,6 +40,17 @@ a {
     color: #000;
     text-decoration: none;
 }
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    color: #000;
+    padding: 8px;
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 0;
+}
 .storyline-menu {
     position: fixed;
     z-index: 11;
