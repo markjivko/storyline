@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://stephino.github.io/storyline/">
+    <a href="https://markjivko.com/storyline/">
         <img src="https://repository-images.githubusercontent.com/387865658/8abb374b-b1b6-40f3-9358-73c77143fef3"/>
     </a>
 </p>
@@ -13,7 +13,7 @@ Project created in 2013 and ported to GitHub in 2021.
 
 Demo
 ----
-Just [visit this page](https://stephino.github.io/storyline) for a short demo of the plugin and included console/debugger.
+Just [visit this page](https://markjivko.com/storyline) for a short demo of the plugin and included console/debugger.
 
 How to use
 ----------
@@ -166,4 +166,4 @@ is set to *true*.
 Examples of sites using the Storyline plugin
 --------------------------------------------
 * [Frank HTML](https://frank.stephino.com)
-* [APK Factory](https://stephino.github.io/apk-factory/)
+* [APK Factory](https://markjivko.com/apk-factory/)
