@@ -15,8 +15,14 @@ Demo
 ----
 Just [visit this page](https://markjivko.com/storyline) for a short demo of the plugin and included console/debugger.
 
-How to use
-----------
+Getting started
+---------------
+Include the Storyline library
+```HTML
+<script defer src="https://markjivko.com/storyline/js/storyline.min.js"></script>
+```
+
+Define your frames
 ```JavaScript
 $(document).ready(function(){
     $.storyline({
