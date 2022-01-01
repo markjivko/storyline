@@ -341,14 +341,16 @@ jQuery && jQuery.extend({
                                 $.each(global.storyLineMenu.children(),function(k,v){
                                     if (typeof $(v).data(message.const.dataTargetFrame) === 'object') {
                                         if ($(v).data(message.const.dataTargetFrame).data(message.const.dataFrameInfo) === $(targetFrame).data(message.const.dataFrameInfo)) {
-                                            menuCorrespondent = $(v);
-                                            return false;
+                                            if (null === menuCorrespondent) {
+                                                !$(v).hasClass('active') && $(v).addClass('active');
+                                                menuCorrespondent = $(v);
+                                            }
+                                        } else {
+                                            $(v).hasClass('active') && $(v).removeClass('active');
                                         }
                                     }
                                 });
                                 if (null !== menuCorrespondent) {
-                                    $(global.storyLineMenu).children().removeClass('active');
-                                    $(menuCorrespondent).addClass('active');
                                     if (options.guide) {
                                         $(global.storyLineMenu).children().attr('title','.' + message.const.menuItemClass);
                                         $(menuCorrespondent).attr('title', '.' + message.const.menuItemClass + '.active');
@@ -644,7 +646,7 @@ jQuery && jQuery.extend({
                                 if (typeof options.buildMenu[global.frameIterator-1] !== 'undefined') {
                                     frameName = options.buildMenu[global.frameIterator-1];
                                 } else {
-                                    log(message.error.buildMenu_notSet.replace('__no__', global.frameIterator), logLevel.error);
+                                    log(message.error.buildMenu_notSet.replace('__no__', global.frameIterator), logLevel.warn);
                                 }
                             } 
 
