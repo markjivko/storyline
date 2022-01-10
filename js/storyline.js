@@ -2,7 +2,7 @@
  * Storyline: a jQuery Plugin for scroll-based animations
  * 
  * @copyright  (c) 2013, Mark Jivko
- * @author     Mark Jivko <stephino.team@gmail.com>
+ * @author     Mark Jivko https://markjivko.com
  * @package    storyline
  * @license    GPL v3+, https://gnu.org/licenses/gpl-3.0.txt
  * 
@@ -441,7 +441,7 @@ jQuery && jQuery.extend({
 
                         // Append the extra CSS
                         if (options.guide) {
-                            global.storyLineMenu.prepend('<a class="logo" href="https://github.com/Stephino/storyline"></a>');
+                            global.storyLineMenu.prepend('<a class="logo" href="https://github.com/markjivko/storyline"></a>');
                             objects.body.append($(
                                 '<style type="text/css">'
                                     + '.' + message.const.menuItemClass + '.active, '
