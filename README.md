@@ -172,4 +172,4 @@ is set to *true*.
 Examples of sites using the Storyline plugin
 --------------------------------------------
 * [Mark Jivko | Portfolio](https://markjivko.com)
-* [APK Factory](https://markjivko.com/apk-factory/)
+* [APK Factory](https://stephino.eu/)
